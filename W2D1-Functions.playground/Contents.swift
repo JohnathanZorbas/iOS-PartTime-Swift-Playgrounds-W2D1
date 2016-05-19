@@ -17,10 +17,12 @@ func sayHello() {
 //: Notice that the playground doesn't show anything to the left of the `print` statement. That's because this code hasn't run. We've created a function called `sayHello`, and described what that function does, but we havn't run the `sayHello` function yet.
 //: In order to run it, we have to *call* the `sayHello` function. Let's do that now by uncommenting this line (We comment out a line by putting // in front of the line of code. This makes the playground not run this line of code. To uncomment a line remove the // from the front of it. This will allow the playground to run this line of code):
 
-//sayHello()
+sayHello()
 
 //: The power of writing a function is that we can now repeat this code whenever we want. Feel free to call `sayHello` a few times below:
-
+sayHello()
+sayHello()
+sayHello()
 //: Now our `sayHello` function is pretty cool, but we might want to say hello to a specific person.
 //: Functions can take one or more "parameters" or inputs, and do something with that input. Take this example function:
 
@@ -30,11 +32,7 @@ func greet(name: String) {
 
 //: This is a function that takes a single `String` as a parameter, and uses it to greet someone by name.
 
-//: ### Challenge 1
-//:
-//: Try to call this function with your name, so it greets you.
-//:
-//: Hint: put your name, wrapped in quotes, between the parentheses `()`.
+greet("johnathan")
 
 
 
@@ -43,14 +41,25 @@ func greet(name: String) {
 //:
 //: Now take the code your wrote in the last playground to print out a grammatical description of our bicycleCount, and write a function that takes in an Int representing how many bicycles we have, and prints out a description of how many bicycles we have. You can call the function `pluralize`.
 
+func pluralize(bicycleCount: Int) {
+    if bicycleCount == 1 {
+        print("there is \(bicycleCount) bicycle")
+    } else if bicycleCount == 0 {
+        print ("there are zero bicycles")
+    } else {
+        print("there are \(bicycleCount) bicycles")
+    }
+}
+
 
 
 
 // Test it by uncommenting these lines:
 
-// pluralize(1)
-// pluralize(0)
-// pluralize(100)
+pluralize(1)
+pluralize(0)
+pluralize(100)
+    
 
 //: Not only can functions take in parameters, but they can return values. So far we've only written functions that don't return anything, they just print stuff. Here is an example of a function that takes in an Int and returns an Int
 
@@ -64,9 +73,20 @@ var result = increment(10)
 // In this example the returned Int is stored inside the variable `result`.
 
 
+
+
 //: ### Challenge 3
 //:
 //: Using the `increment` function as an example, re-write the `pluralize` function (call it `pluralizedString`) so it returns a String instead of printing.
+func pluralizedString(bicycleCount: Int) -> String {
+    if bicycleCount == 1 {
+        return "There is \(bicycleCount) bicycle"
+    } else if (bicycleCount == 0) {
+        return "There are zero bicycles"
+    } else {
+        return "There are \(bicycleCount) bicycles"
+    }
+}
 
 
 
@@ -74,9 +94,9 @@ var result = increment(10)
 
 // Test it by uncommenting the lines below:
 
-//var str1 = pluralizedString(1)
-//var str2 = pluralizedString(0)
-//var str3 = pluralizedString(100)
+var str1 = pluralizedString(1)
+var str2 = pluralizedString(0)
+var str3 = pluralizedString(100)
 
 
 //: ## Bonus Challenge
@@ -85,7 +105,7 @@ var result = increment(10)
 //:
 //: One way would be to take an input word as well as a count and add "s" to the end of it. Something like:
 
-// pluralizedWord("car", 2) // returns "cars"
+// pluralizedWord("car", 2) //returns "cars"
 
 //: But, since english is a silly language, adding "s" doesn't always make a correct pluralization. Irregularities are common. Think of octopus/octopi, sheep/sheep and man/men.
 //: So let's make it even better, we want a fuction called pluralizedWord that takes in 3 inputs:
@@ -94,6 +114,16 @@ var result = increment(10)
 //: 2) a plural noun string (e.g. "bicycles")
 //: 3) a count of how many (e.g. 100)
 //:
+func pluralizedWord(singular: String, pluralNoun: String, count: Int) -> String {
+    if count == 1{
+        return "there is \(count) \(singular)"
+    }
+        else if (count == 0) {
+            return "there are zero \(pluralNoun)"
+        } else {
+            return "there are \(count) \(pluralNoun)"
+    }
+}
 
 
 
@@ -102,12 +132,12 @@ var result = increment(10)
 
 // Test your function by uncommenting:
 
-// pluralizedWord("octopus", pluralNoun: "octopi", count: 1)
-// pluralizedWord("woman", pluralNoun: "women", count: 2)
-// pluralizedWord("apple", pluralNoun: "apples", count: 0)
+pluralizedWord("octopus", pluralNoun: "octopi", count: 1)
+pluralizedWord("woman", pluralNoun: "women", count: 2)
+pluralizedWord("apple", pluralNoun: "apples", count: 0)
+
 
 // You might have noticed that when we have a function that takes multiple inputs, we have to explicitly write out all input names other than the first one e.g. `pluralNoun` and `count`, seen above.
-
 
 
 
